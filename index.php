@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Place favicon.ico and apple-touch-icon(s) in the root directory -->
-
+        <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/foundation.min.css">
         <link rel="stylesheet" href="css/main.css">
@@ -23,7 +23,7 @@
         <!-- Add your site or application content here -->
         <h1 class="text-left">Matt Trask</h1>
         <h3 class="subheader text-left">PHP Developer</h3>
-        <p class="text-left">I enjoy web development, dinosaurs, coffee, the Beatles and soccer</p>
+        <p class="subheader text-left">I enjoy web development, dinosaurs, coffee, the Beatles and soccer</p>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>

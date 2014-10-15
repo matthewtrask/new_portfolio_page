@@ -1,0 +1,8 @@
+*, html, body {
+	font-family: 'Merriweather', 'Helvetica', 'Arial', serif;
+}
+
+h1 {
+	font-weight: 700;
+	font-size: 5.5em;
+}
