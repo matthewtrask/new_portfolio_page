@@ -19,7 +19,8 @@
         <!--[if lt IE 8]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
+        <nav class="top-bar" data-topbar role="navigation">
+        </nav>
         <!-- Add your site or application content here -->
         <h1 class="text-left">Matt Trask</h1>
         <h3 class="subheader text-left">PHP Developer</h3>
