@@ -58,26 +58,25 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 		if(!isset($error)){
 
-			try {
+		try {
 
-				//insert into database
-				$stmt = $db->prepare('INSERT INTO blog_posts (postTitle,postDesc,postCont,postDate) VALUES (:postTitle, :postDesc, :postCont, :postDate)') ;
-				$stmt->execute(array(
-					':postTitle' => $postTitle,
-					':postDesc' => $postDesc,
-					':postCont' => $postCont,
-					':postDate' => date('Y-m-d H:i:s')
-				));
+			$postSlug = slug($postTitle);
 
-				//redirect to index page
-				header('Location: index.php?action=added');
-				exit;
+			//insert into database
+			$stmt = $db->prepare('INSERT INTO blog_posts (postTitle,postSlug,postDesc,postCont,postDate) VALUES (:postTitle, :postSlug, :postDesc, :postCont, :postDate)') ;
+			$stmt->execute(array(
+				':postTitle' => $postTitle,
+				':postSlug' => $postSlug,
+				':postDesc' => $postDesc,
+				':postCont' => $postCont,
+				':postDate' => date('Y-m-d H:i:s')
+			));
 
-			} catch(PDOException $e) {
-			    echo $e->getMessage();
-			}
+			//redirect to index page
+			header('Location: index.php?action=added');
+			exit;
 
-		}
+	}
 
 	}
 
