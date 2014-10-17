@@ -22,7 +22,7 @@ public function create_hash($value) {
 	return $hash = crypt($value, '$2a$12$'.substr(str_replace('+', '.', base64_encode(sha1(microtime(true), true))), 0, 22));
 }
 
-private function verify_hush($password, $hash){
+private function verify_hash($password, $hash){
 	return $hash == crypt($password, $hash);
 }
 
@@ -35,6 +35,16 @@ private function get_user_hash($username){
 	}
 	catch(PDOException $e) {
 		echo '<p class="error">'.$e->getMessage().'</p>';
+	}
+}
+
+public function login($username, $password){
+	$hashed = $this->get_user_hash($username);
+
+	if($this->verify_hash($username, $password) == 1){
+
+		$_SESSION['loggedin'] = true;
+		return true;
 	}
 }
 ?>
