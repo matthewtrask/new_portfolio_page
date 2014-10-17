@@ -6,6 +6,29 @@ require_once('../includes/config.php');
 if(!$user->is_logged_in()){ header('Location: login.php'); }
 ?>
 
+<?php
+//if form has been submitted process it
+if(isset($_POST['submit'])){
+
+	$_POST = array_map( 'stripslashes', $_POST );
+
+	//collect form data
+	extract($_POST);
+
+	//very basic validation
+	if($postTitle ==''){
+		$error[] = 'Please enter the title.';
+	}
+
+	if($postDesc ==''){
+		$error[] = 'Please enter the description.';
+	}
+
+	if($postCont ==''){
+		$error[] = 'Please enter the content.';
+	}
+?>
+
 <form action='' method='post'>
 
 	<p><label>Title</label><br />
