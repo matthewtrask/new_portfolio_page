@@ -5,7 +5,7 @@ require_once('../includes/config.php');
 //if not logged in redirect to login page
 if(!$user->is_logged_in()){ header('Location: login.php'); }
 ?>
-
+<?php include('menu.php');?>
 <table>
 	<tr>
 		<th>Title</th>
@@ -44,3 +44,33 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 	}
 
 </script>
+
+<?php
+	if(isset($_GET['delpost'])){
+
+		$stmt = $db->prepare('DELETE FROM blog_post WHERE postID = :postID');
+		$stmt->execute(array(':postID' => $_GET['delpost']));
+
+		header('Location: index.php?ction=deleted');
+		exit;
+
+	}
+
+	if(isset($_GET['action'])){
+		echo '<h3>Post '.$_GET['action'].'</h3>';
+	}
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
