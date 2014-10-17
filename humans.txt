@@ -4,12 +4,13 @@
 # TEAM
 
     <name> -- <role> -- <twitter>
-
+    Matt Trask -- Dev -- @matthewtrask
 # THANKS
 
     <name>
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3
+    HTML5, CSS3, PHP
     Normalize.css, jQuery, Modernizr
+    Disqus
