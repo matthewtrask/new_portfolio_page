@@ -76,6 +76,32 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 				':postCont' => $postCont,
 				':postID' => $postID
 			));
+			//delete all items with the current postID
+			$stmt = $db->prepare('DELETE FROM blog_post_cats WHERE postID = :postID');
+			$stmt->execute(array(':postID' => $postID));
+
+			if(is_array($catID)){
+			foreach($_POST['catID'] as $catID){
+			$stmt = $db->prepare('INSERT INTO blog_post_cats (postID,catID)VALUES(:postID,:catID)');
+			$stmt->execute(array(
+			':postID' => $postID,
+			':catID' => $catID
+			));
+			}
+		}
+
+			$postID = $db->lastInsertId();
+
+			//add categories
+			if(is_array($catID)){
+				foreach($_POST['catID'] as $catID){
+				$stmt = $db->prepare('INSERT INTO blog_post_cats (postID,catID)VALUES(:postID,:catID)');
+				$stmt->execute(array(
+				':postID' => $postID,
+				':catID' => $catID
+				));
+			}
+		}
 
 			//redirect to index page
 			header('Location: index.php?action=updated');
@@ -107,6 +133,30 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 		}
 
 	?>
+	<fieldset>
+	<legend>Categories</legend>
+
+	<?php
+
+	$stmt2 = $db->query('SELECT catID, catTitle FROM blog_cats ORDER BY catTitle');
+	while($row2 = $stmt2->fetch()){
+
+		$stmt3 = $db->prepare('SELECT catID FROM blog_post_cats WHERE catID = :catID AND postID = :postID') ;
+		$stmt3->execute(array(':catID' => $row2['catID'], ':postID' => $row['postID']));
+		$row3 = $stmt3->fetch(); 
+
+		if($row3['catID'] == $row2['catID']){
+			$checked = 'checked=checked';
+		} else {
+			$checked = null;
+		}
+
+	    echo "<input type='checkbox' name='catID[]' value='".$row2['catID']."' $checked> ".$row2['catTitle']."<br />";
+	}
+
+	?>
+
+	</fieldset>
 
 	<form action='' method='post'>
 		<input type='hidden' name='postID' value='<?php echo $row['postID'];?>'>
