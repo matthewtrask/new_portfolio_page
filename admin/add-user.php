@@ -52,7 +52,7 @@ if(!$user->is_logged_in()){ header('Location: login.php'); }
 
 		if(!isset($error)){
 
-			$hashedpassword = $user->create_hash($password);
+			$hashedpassword = $user->password_hash($_POST['password'], PASSWORD_BCRYPT);
 
 			try {
 

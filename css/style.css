@@ -6,3 +6,19 @@ h1 {
 	font-weight: 700;
 	font-size: 5.5em;
 }
+
+#wrapper {
+	margin:auto;
+	width:960px;
+}
+
+#main {
+	float:left;
+	width:640px;
+	margin-right:20px;
+}
+
+#sidebar {
+	float:right;
+	width:300px;
+}
