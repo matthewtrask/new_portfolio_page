@@ -24,8 +24,8 @@
         <!-- Add your site or application content here -->
         <h1 class="text-left">Matt Trask</h1>
         <h3 class="subheader text-left">PHP Developer</h3>
-        <p class="subheader text-left">I enjoy web development, dinosaurs, coffee, the Beatles and soccer</p>
-        <p class="text-left">I work freelance, doing PHP development for anyone who wants. I volunteer time to non profits to give them a hand as well.</p>
+        
+        <!-- Scripts -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
         <script src="js/foundation.min.js"></script>
